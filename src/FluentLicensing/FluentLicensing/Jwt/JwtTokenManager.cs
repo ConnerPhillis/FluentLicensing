@@ -15,7 +15,7 @@ namespace FluentLicensing.Jwt
 
 		private readonly LicenseSigningParameters _signingParameters;
 
-		public JwtTokenManager(LicenseSigningParameters signingParameters)
+		internal JwtTokenManager(LicenseSigningParameters signingParameters)
 		{
 			_signingParameters = signingParameters;
 		}
