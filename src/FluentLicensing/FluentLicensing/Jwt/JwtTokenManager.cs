@@ -11,7 +11,7 @@ namespace FluentLicensing.Jwt
 {
 	internal sealed class JwtTokenManager
 	{
-		internal const string LicenseDataClaim = "ld";
+		private const string LicenseDataClaim = "ld";
 
 		private readonly LicenseSigningParameters _signingParameters;
 
@@ -58,7 +58,7 @@ namespace FluentLicensing.Jwt
 				ValidateAudience = false,
 				ValidateLifetime = false,
 				IssuerSigningKey =
-					new RsaSecurityKey(_signingParameters.rsa.ExportParameters(false))
+					new RsaSecurityKey(_signingParameters.Rsa.ExportParameters(false))
 			};
 
 			var claimsPrincipal = handler.ValidateToken(token, validationParameters, out _);
@@ -73,7 +73,7 @@ namespace FluentLicensing.Jwt
 
 		private SigningCredentials GenerateSigningCredentials()
 			=> new SigningCredentials(
-				new RsaSecurityKey(_signingParameters.rsa),
+				new RsaSecurityKey(_signingParameters.Rsa),
 				SecurityAlgorithms.RsaSsaPssSha256);
 	}
 }

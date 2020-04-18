@@ -12,7 +12,7 @@ namespace FluentLicensing
 {
 	public class LicenseSigningParameters : IDisposable
 	{
-		public byte[] PublicKey => rsa.ExportRSAPublicKey();
+		public byte[] PublicKey => Rsa.ExportRSAPublicKey();
 
 		public byte[] PrivateKey
 		{
@@ -20,7 +20,7 @@ namespace FluentLicensing
 			{
 				try
 				{
-					return rsa.ExportRSAPrivateKey();
+					return Rsa.ExportRSAPrivateKey();
 				}
 				catch
 				{
@@ -29,7 +29,7 @@ namespace FluentLicensing
 			}
 		}
 
-		[JsonIgnore] internal readonly RSA rsa;
+		[JsonIgnore] internal readonly RSA Rsa;
 
 
 		/// <summary>
@@ -38,7 +38,7 @@ namespace FluentLicensing
 		/// </summary>
 		public LicenseSigningParameters(int keySize = 2048)
 		{
-			rsa = RSA.Create(keySize);
+			Rsa = RSA.Create(keySize);
 		}
 
 		/// <summary>
@@ -48,7 +48,7 @@ namespace FluentLicensing
 		/// <param name="keySize"></param>
 		public LicenseSigningParameters(byte[] publicKey, int keySize = 2048) : this(keySize)
 		{
-			rsa.ImportRSAPublicKey(publicKey, out int _);
+			Rsa.ImportRSAPublicKey(publicKey, out int _);
 		}
 
 		/// <summary>
@@ -62,8 +62,8 @@ namespace FluentLicensing
 			byte[] privateKey,
 			int keySize = 2048) : this(keySize)
 		{
-			rsa.ImportRSAPublicKey(publicKey, out _);
-			rsa.ImportRSAPrivateKey(privateKey, out _);
+			Rsa.ImportRSAPublicKey(publicKey, out _);
+			Rsa.ImportRSAPrivateKey(privateKey, out _);
 		}
 
 		public void ExportKeys(string path)
@@ -84,7 +84,7 @@ namespace FluentLicensing
 			{
 				PrivateKey = PrivateKey,
 				PublicKey = PublicKey,
-				KeyLength = rsa.KeySize
+				KeyLength = Rsa.KeySize
 			};
 
 		private static LicenseSigningParameters Import(string path)
@@ -111,7 +111,7 @@ namespace FluentLicensing
 
 		public void Dispose()
 		{
-			rsa?.Dispose();
+			Rsa?.Dispose();
 		}
 	}
 
