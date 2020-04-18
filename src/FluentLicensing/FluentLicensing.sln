@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentLicensing", "FluentLicensing\FluentLicensing.csproj", "{9EA5F8E2-5D19-4B21-B04F-29CB38A03DE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentLicensing.Tests", "FluentLicensing.Tests\FluentLicensing.Tests.csproj", "{EAA1E95E-EFF3-403F-832E-EE5888C01E6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EA5F8E2-5D19-4B21-B04F-29CB38A03DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA5F8E2-5D19-4B21-B04F-29CB38A03DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA5F8E2-5D19-4B21-B04F-29CB38A03DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA5F8E2-5D19-4B21-B04F-29CB38A03DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA1E95E-EFF3-403F-832E-EE5888C01E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA1E95E-EFF3-403F-832E-EE5888C01E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA1E95E-EFF3-403F-832E-EE5888C01E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA1E95E-EFF3-403F-832E-EE5888C01E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F37C526-1AB2-414B-B7FE-58B8066A6351}
+	EndGlobalSection
+EndGlobal
