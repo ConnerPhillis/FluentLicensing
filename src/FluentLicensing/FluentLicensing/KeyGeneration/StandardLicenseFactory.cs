@@ -25,13 +25,13 @@ namespace FluentLicensing.KeyGeneration
 			return this;
 		}
 
-		public ILicenseFactory<T> WithLicenseType(LicenseType licenseType)
+		public ILicenseFactory<T> WithType(LicenseType licenseType)
 		{
 			_licenseKey.LicenseType = licenseType;
 			return this;
 		}
 
-		public ILicenseFactory<T> WithLicenseName(string licenseName)
+		public ILicenseFactory<T> WithName(string licenseName)
 		{
 			_licenseKey.LicenseName = licenseName;
 			return this;

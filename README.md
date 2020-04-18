@@ -64,8 +64,8 @@ public void GenerateLicense()
     };
 
     var signedLicense = LicenseKeyManager.Create(licenseInformation)
-        .WithLicenseName("Test License")
-        .WithLicenseType(LicenseType.Enterprise)
+        .WithName("Test License")
+        .WithType(LicenseType.Enterprise)
         .WithActivationDate(DateTime.UtcNow.AddDays(1))
         .WithExpirationDate(DateTime.UtcNow.AddDays(30))
         .CreateAndSignLicense(signingParameters);
