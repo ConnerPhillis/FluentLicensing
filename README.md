@@ -50,26 +50,46 @@ public class TestLicense
 }
 ```
 
+#### Using the Fluent API
+
 FluentLicensing also supports a fluent API to configure all of its license properties.
 
 ```CSharp
-public void GenerateLicense() 
+using var signingParameters = new LicenseSigningParameters();
+
+var licenseInformation = new TestLicense
 {
-    using var signingParameters = new LicenseSigningParameters()
+    MaxUsers = 10000,
+    IssuedTo = "Some Random User"
+};
 
-    var licenseInformation = new TestLicense
-    {
-        MaxUsers = 10000,
-        IssuedTo = "Some Random User"
-    };
+var signedLicense = LicenseKeyManager.Create(licenseInformation)
+    .WithName("Test License")
+    .WithType(LicenseType.Enterprise)
+    .WithActivationDate(DateTime.UtcNow.AddDays(1))
+    .WithExpirationDate(DateTime.UtcNow.AddDays(30))
+    .CreateAndSignLicense(signingParameters);
+```
 
-    var signedLicense = LicenseKeyManager.Create(licenseInformation)
-        .WithName("Test License")
-        .WithType(LicenseType.Enterprise)
-        .WithActivationDate(DateTime.UtcNow.AddDays(1))
-        .WithExpirationDate(DateTime.UtcNow.AddDays(30))
-        .CreateAndSignLicense(signingParameters);
-}
+#### Using Standard Assignments
+
+If you do not want to use the fluent API for creation you can call `CreateLicense` on the `ILicenseFactory` interface and manipulate the license with standard assignments, then sign the license later on with the `Sign` method. Example:
+
+```csharp
+using var signingParameters = new LicenseSigningParameters();
+
+var licenseInformation = new TestLicense
+{
+    MaxUsers = 10000,
+    IssuedTo = "Some Random User"
+};
+
+var license = LicenseKeyManager.Create(licenseInformation)
+    .CreateLicense();
+
+license.ExpirationDate = DateTime.UtcNow.AddDays(7);
+license.LicenseType = LicenseType.Standard;
+var signedLicense = license.Sign(signingParameters)
 ```
 
 Once you have generated the license then you are free to transport it anywhere. So long as the public key is present the validator should be able to check its contents.

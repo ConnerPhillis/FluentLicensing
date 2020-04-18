@@ -177,7 +177,7 @@ namespace FluentLicensing.KeyValidation
 			string licenseName,
 			string message = "")
 		{
-			if (_licenseKey.LicenseName == licenseName)
+			if (_licenseKey.LicenseName != licenseName)
 				return this;
 
 			message = string.IsNullOrWhiteSpace(message)

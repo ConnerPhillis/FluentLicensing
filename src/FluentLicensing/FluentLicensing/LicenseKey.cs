@@ -1,6 +1,7 @@
 ﻿using System;
 
 using FluentLicensing.Internals.Extensions;
+using FluentLicensing.Jwt;
 
 using Newtonsoft.Json;
 
@@ -9,16 +10,28 @@ namespace FluentLicensing
 	public class LicenseKey<T>
 	{
 		[JsonProperty("ad")]
-		public DateTime ActivationDate { get; set; }
+		private DateTime _activationDate = DateTime.UnixEpoch.ToUniversalTime();
+
+		public DateTime ActivationDate
+		{
+			get => _activationDate.ToUniversalTime();
+			set => _activationDate = value.ToUniversalTime();
+		}
 
 		[JsonProperty("ed")]
-		public DateTime ExpirationDate { get; set; }
+		private DateTime _expirationDate = DateTime.MaxValue.ToUniversalTime();
+
+		public DateTime ExpirationDate
+		{
+			get => _expirationDate.ToUniversalTime();
+			set => _expirationDate = value.ToUniversalTime();
+		}
 
 		[JsonProperty("lt")]
 		public LicenseType LicenseType { get; set; } = LicenseType.Standard;
 
 		[JsonProperty("ln")]
-		public string LicenseName { get; set; }
+		public string LicenseName { get; set; } = string.Empty;
 
 		[JsonProperty("ekd")]
 		internal string EncodedKeyData { get; set; }
@@ -38,5 +51,10 @@ namespace FluentLicensing
 		{
 			KeyData = keyData;
 		}
+
+		public SignedLicense Sign(LicenseSigningParameters parameters)
+			=> new SignedLicense(
+				new JwtTokenManager(parameters).CreateSecurityToken(this),
+				parameters.PublicKey);
 	}
 }

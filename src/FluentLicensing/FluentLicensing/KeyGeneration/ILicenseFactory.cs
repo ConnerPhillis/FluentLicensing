@@ -33,6 +33,12 @@ namespace FluentLicensing.KeyGeneration
 		ILicenseFactory<T> WithName(string licenseName);
 
 		/// <summary>
+		/// creates the license as an object without signing 
+		/// </summary>
+		/// <returns></returns>
+		LicenseKey<T> CreateLicense();
+
+		/// <summary>
 		/// run an operation to create the signed, binary version of the license
 		/// </summary>
 		/// <param name="parameters">the signing parameters the license should have</param>

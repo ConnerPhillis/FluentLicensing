@@ -10,7 +10,7 @@ namespace FluentLicensing
 			=> new StandardLicenseFactory<object>(new LicenseKey<object>());
 
 		public static ILicenseFactory<T> Create<T>(T licenseData)
-			=> new StandardLicenseFactory<T>(new LicenseKey<T>(licenseData));
+			=> new StandardLicenseFactory<T>(licenseData);
 
 		public static ILicenseValidator<object> Load(SignedLicense signedLicense)
 			=> Load<object>(signedLicense);

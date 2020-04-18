@@ -1,16 +1,19 @@
 ﻿using System;
 
-using FluentLicensing.Jwt;
-
 namespace FluentLicensing.KeyGeneration
 {
 	public class StandardLicenseFactory<T> : ILicenseFactory<T>
 	{
 		private readonly LicenseKey<T> _licenseKey;
 
-		public StandardLicenseFactory(LicenseKey<T> licenseKey)
+		public StandardLicenseFactory()
 		{
-			_licenseKey = licenseKey;
+			_licenseKey = new LicenseKey<T>();
+		}
+
+		public StandardLicenseFactory(T licenseInformation)
+		{
+			_licenseKey = new LicenseKey<T>(licenseInformation);
 		}
 
 		public ILicenseFactory<T> WithActivationDate(DateTime activationDate)
@@ -37,9 +40,10 @@ namespace FluentLicensing.KeyGeneration
 			return this;
 		}
 
+		public LicenseKey<T> CreateLicense()
+			=> _licenseKey;
+
 		public SignedLicense CreateAndSignLicense(LicenseSigningParameters parameters)
-			=> new SignedLicense(
-				new JwtTokenManager(parameters).CreateSecurityToken(_licenseKey),
-				parameters.PublicKey);
+			=> _licenseKey.Sign(parameters);
 	}
 }

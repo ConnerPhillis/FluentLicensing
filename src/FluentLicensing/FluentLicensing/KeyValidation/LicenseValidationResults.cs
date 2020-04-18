@@ -10,7 +10,5 @@ namespace FluentLicensing.KeyValidation
 		public IReadOnlyCollection<string> Errors { get; internal set; }
 
 		public LicenseKey<T> LicenseKey { get; internal set; }
-
-		
 	}
 }
