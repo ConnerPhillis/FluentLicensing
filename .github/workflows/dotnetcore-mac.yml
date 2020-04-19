@@ -1,4 +1,4 @@
-name: .NET Core Mac
+name: Mac
 
 on:
   push:
