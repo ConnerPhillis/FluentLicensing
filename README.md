@@ -99,7 +99,7 @@ Once you have generated the license then you are free to transport it anywhere. 
 The license data can be stored however you please, however once you start to validate the license you must reconstruct the `SignedLicense` object that the license was originally exported as. This class only consists of two fields, `PublicKey` and `LienseData` so this is not hard to do.
 
 ```csharp
-var licenseData = "<license data>"
+var licenseData = GetLicenseData();
 var publicKey = GetLicenseKey();
 
 var signedLicense = new SignedLicense(licenseData, publicKey);
