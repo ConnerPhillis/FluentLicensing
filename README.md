@@ -1,8 +1,6 @@
 ﻿## About
 
-| Builds | Status |
-| ------ | ------ |
-| .Net Core | ![.NET Core](https://github.com/ConnerPhillis/StandardLicensing/workflows/.NET%20Core/badge.svg) |
+![.NET Core](https://github.com/ConnerPhillis/StandardLicensing/workflows/.NET%20Core/badge.svg)
 
 Easy-to-use licensing library for .Net, writting aginast .Net Standard for portability.
 

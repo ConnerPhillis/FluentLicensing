@@ -2,11 +2,30 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Conner Phillis</Authors>
+    <Company />
+    <Product>Fluent Licensing</Product>
+    <Description>A fluent licensing API for .Net Standard</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/ConnerPhillis/StandardLicensing</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ConnerPhillis/StandardLicensing</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Licensing</PackageTags>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
