@@ -61,7 +61,18 @@ namespace FluentLicensing.Jwt
 					new RsaSecurityKey(_signingParameters.Rsa.ExportParameters(false))
 			};
 
-			var claimsPrincipal = handler.ValidateToken(token, validationParameters, out _);
+			ClaimsPrincipal claimsPrincipal;
+
+			try
+			{
+				claimsPrincipal = handler.ValidateToken(token, validationParameters, out _);
+			}
+			catch (Exception ex)
+			{
+				throw new InvalidOperationException(
+					"unable to validate token with given public key",
+					ex);
+			}
 
 			if (!claimsPrincipal.Claims.Any())
 				throw new InvalidOperationException("token has no claims");

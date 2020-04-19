@@ -66,13 +66,13 @@ namespace FluentLicensing
 			Rsa.ImportRSAPrivateKey(privateKey, out _);
 		}
 
-		public void ExportKeys(string path)
+		public void Export(string path)
 			=> File.WriteAllText(
 				path,
 				GenerateParametersDto()
 				   .ToJsonString());
 
-		public Task ExportKeysAsync(string path, CancellationToken cancellationToken = default)
+		public Task ExportAsync(string path, CancellationToken cancellationToken = default)
 			=> File.WriteAllTextAsync(
 				path,
 				GenerateParametersDto()
@@ -87,7 +87,7 @@ namespace FluentLicensing
 				KeyLength = Rsa.KeySize
 			};
 
-		private static LicenseSigningParameters Import(string path)
+		public static LicenseSigningParameters Import(string path)
 		{
 			var parameters = File.ReadAllText(path)
 			   .FromJson<LicenseParametersDto>();
@@ -97,7 +97,7 @@ namespace FluentLicensing
 				parameters.KeyLength);
 		}
 
-		private static async Task<LicenseSigningParameters> ImportAsync(
+		public static async Task<LicenseSigningParameters> ImportAsync(
 			string path,
 			CancellationToken cancellationToken = default)
 		{
