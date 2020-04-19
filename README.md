@@ -1,5 +1,9 @@
 ﻿## About
 
+| Builds | Status |
+| ------ | ------ |
+| .Net Core | ![.NET Core](https://github.com/ConnerPhillis/StandardLicensing/workflows/.NET%20Core/badge.svg) |
+
 Easy-to-use licensing library for .Net, writting aginast .Net Standard for portability.
 
 This API is a rethinking of the existing `Standard.Licensing` project, found [here on GitHub](https://github.com/junian/Standard.Licensing). The purpose of this project is to update the project to use the newer set of APIs that .Net now supports, swapping using signing from `Bouncy Castle` to using JWT tokens to ensure license keys aren't tampered with.
