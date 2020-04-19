@@ -115,6 +115,9 @@ once you have the `SignedLicense` object, you can use the license validation API
 
 var signedLicense = GetSignedLicense();
 
+if(!signedLicense.SignatureValid())
+    throw new Exception("This license has been tampered with!");
+
 var validationResults = LicenseKeyManager.Load<TestLicense>(signedLicense)
     .TypeNot(LicenseType.Trial)
     .ActivatesBefore(DateTime.UtcNow)
