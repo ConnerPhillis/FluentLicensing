@@ -8,8 +8,8 @@
     <Product>Fluent Licensing</Product>
     <Description>A fluent licensing API for .Net Standard</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/ConnerPhillis/StandardLicensing</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ConnerPhillis/StandardLicensing</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ConnerPhillis/FluentLicensing</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ConnerPhillis/FluentLicensing</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Licensing</PackageTags>
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
