@@ -122,10 +122,10 @@ var validationResults = LicenseKeyManager.Load<TestLicense>(signedLicense)
     .TypeNot(LicenseType.Trial)
     .ActivatesBefore(DateTime.UtcNow)
     .ExpiresAfter(DateTime.UtcNow, "License is expired")
-    .MeetsCondition(license => license.LicenseData.IssuedTo == "Some Random User",
+    .MeetsCondition(license => license.KeyData.IssuedTo == "Some Random User",
         "This license was issued to Some Random User, and you're not them!")
-    .IfExpiresBefore(DateTime.UtcNow.AddDays(7), expirationDate 
-        => Console.WriteLine("warning, license expires soon")
+    .IfExpiresBefore(DateTime.UtcNow.AddDays(7), expirationDate
+        => Console.WriteLine("warning, license expires soon"))
     .Validate();
 
 if(validationResults.HasErrors)
